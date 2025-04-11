@@ -8,8 +8,6 @@ It enables users to:
 
 •	Input a text query and receive product images matching the description.
 
-•	Upload PDF or DOCX documents and extract keywords to perform a semantic image search.
-
 With its modular client-server architecture, this solution is easy to deploy, extend, and integrate into broader e-commerce workflows. This project is designed for datasets of approximately 10,000 product images, making it suitable for mid-sized retail catalogs or prototypes.
 Architecture Overview 
 
@@ -21,7 +19,7 @@ The system is split into two independent components:
 
 •	A backend server that handles preprocessing, embedding generation, similarity search, and filtering.
 
-CLIP is used to generate feature embeddings for both images and text, while FAISS allows for fast approximate nearest-neighbor search. The backend also applies a simple text filtering system to block inappropriate queries using a configurable banned word list.
+CLIP is used to generate feature embeddings for both images and text, while FAISS allows for fast approximate nearest-neighbor search. The backend could be used to apply simple text filtering system to block inappropriate queries using a configurable banned word list.
 Project Directory Structure
 
 `repo/`
@@ -67,15 +65,15 @@ cd image-search-engine
 
 ### 2. Set Up the Backend (FastAPI API Server)
 
-cd backend
+`cd backend`
 
-python -m venv venv
+`python -m venv venv` #replace the virtual environment name 
 
-source venv/bin/activate  # Windows: venv\Scripts\activate
+`source venv/bin/activate  # Windows: venv\Scripts\activate`
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
-uvicorn api1:app --host 0.0.0.0 --port 8002
+`uvicorn api1:app --host 0.0.0.0 --port 8002`
 
 This will launch the API on http://127.0.0.1:8002.
 
@@ -83,15 +81,15 @@ This will launch the API on http://127.0.0.1:8002.
 
 Open a separate terminal window:
 
-cd frontend
+`cd frontend`
 
-python -m venv venv
+`python -m venv venv` #replace the virtual environment name 
 
-source venv/bin/activate
+`source venv/bin/activate`
 
-pip install -r requirements.txt
+`pip install -r requirements.txt`
 
-streamlit run app1.py
+`streamlit run app1.py`
 
 The Streamlit interface will automatically connect to the backend server and be accessible in your web browser.
 Python 3.8+ is recommended. Make sure the required .npy and .index files are present in the data/ directory.
